@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI DPP Generator</title>
 
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="login-box">
+
+<h1>🤖 AI DPP Generator</h1>
+
+<label>Exam</label>
+<select id="exam">
+    <option>NEET</option>
+    <option>JEE</option>
+</select>
+
+<label>Subject</label>
+<select id="subject">
+    <option>Biology</option>
+    <option>Physics</option>
+    <option>Chemistry</option>
+    <option>Mathematics (JEE)</option>
+</select>
+
+<label>Chapter</label>
+<input type="text" id="chapter" placeholder="Enter Chapter Name">
+
+<label>Topic (Optional)</label>
+<input type="text" id="topic" placeholder="Enter Topic">
+
+<label>Difficulty</label>
+<select id="difficulty">
+    <option>Easy</option>
+    <option>Medium</option>
+    <option>Hard</option>
+</select>
+
+<label>Number of Questions</label>
+<select id="questions">
+    <option>10</option>
+    <option>20</option>
+    <option>30</option>
+    <option>50</option>
+    <option>100</option>
+</select>
+
+<button onclick="generateDPP()">Generate DPP</button>
+
+<br><br>
+
+<a href="dashboard.html">
+<button>⬅ Back to Dashboard</button>
+</a>
+
+</div>
+
+</div>
+
+<script src="js/dpp.js"></script>
+
+</body>
+</html>
