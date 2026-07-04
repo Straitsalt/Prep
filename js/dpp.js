@@ -137,13 +137,37 @@ function loadTopics() {
 
 function generateDPP() {
 
-  const exam = document.getElementById("exam").value;
-  const subject = document.getElementById("subject").value;
-  const chapter = document.getElementById("chapter").value;
-  const topic = document.getElementById("topic").value;
-  const difficulty = document.getElementById("difficulty").value;
-  const questions = document.getElementById("questions").value;
+const exam = document.getElementById("exam").value;
+const subject = document.getElementById("subject").value;
+const chapter = document.getElementById("chapter").value;
+const topic = document.getElementById("topic").value;
+const difficulty = document.getElementById("difficulty").value;
+const questions = document.getElementById("questions").value;
 
+document.getElementById("result").innerHTML = `
+<h2>📄 DPP Details</h2>
+
+<p><b>Exam:</b> ${exam}</p>
+<p><b>Subject:</b> ${subject}</p>
+<p><b>Chapter:</b> ${chapter}</p>
+<p><b>Topic:</b> ${topic}</p>
+<p><b>Difficulty:</b> ${difficulty}</p>
+<p><b>Questions:</b> ${questions}</p>
+
+<hr>
+
+<h3>🤖 Ready to Generate AI DPP</h3>
+
+<button onclick="generateAI()">
+Generate with Gemini AI
+</button>
+`;
+function generateAI(){
+
+alert("Next step: Gemini AI will generate the DPP.");
+
+}
+}
   if (subject === "") {
     alert("Please select a subject.");
     return;
