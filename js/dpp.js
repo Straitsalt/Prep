@@ -1,4 +1,28 @@
 const chapters = {
+const topics = {
+
+"Human Physiology":[
+"Breathing and Exchange of Gases",
+"Body Fluids and Circulation",
+"Excretory Products",
+"Locomotion",
+"Neural Control",
+"Chemical Coordination"
+],
+
+"Kinematics":[
+"Motion in One Dimension",
+"Motion in Two Dimensions",
+"Relative Motion"
+],
+
+"Atomic Structure":[
+"Bohr Model",
+"Quantum Numbers",
+"Electronic Configuration"
+]
+
+};
 
 Biology: [
 "Cell: Structure and Function",
