@@ -1,1 +1,3 @@
-alert("Calculator JS Loaded");
+function calculateScore() {
+    alert("Calculate button clicked!");
+}
