@@ -62,7 +62,30 @@ Mathematics: [
 
 };
 
-function loadChapters(){
+function loadChapters()
+function loadTopics(){
+
+const chapter=document.getElementById("chapter").value;
+
+const topic=document.getElementById("topic");
+
+topic.innerHTML="";
+
+if(!topics[chapter]){
+
+topic.innerHTML="<option>Entire Chapter</option>";
+
+return;
+
+}
+
+topics[chapter].forEach(item=>{
+
+chapter.innerHTML += `<option>${item}</option>`;
+
+});
+
+}{
 
 const subject=document.getElementById("subject").value;
 
@@ -75,7 +98,8 @@ chapters[subject].forEach(item=>{
 chapter.innerHTML+=`
 <option>${item}</option>
 `;
-
+chapter.onchange = loadTopics;
+loadTopics();
 });
 
 }
