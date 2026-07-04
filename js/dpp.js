@@ -1,12 +1,10 @@
-// ==========================
-// SUBJECT -> CHAPTER DATA
-// ==========================
+// ======================
+// Chapters
+// ======================
 
 const chapters = {
-
   Biology: [
     "Cell: Structure and Function",
-    "Biomolecules",
     "Human Physiology",
     "Plant Physiology",
     "Genetics and Evolution",
@@ -18,7 +16,6 @@ const chapters = {
     "Kinematics",
     "Laws of Motion",
     "Work, Energy and Power",
-    "Gravitation",
     "Current Electricity",
     "Electrostatics",
     "Modern Physics"
@@ -39,16 +36,15 @@ const chapters = {
     "Integration",
     "Probability"
   ]
-
 };
 
-// ==========================
-// CHAPTER -> TOPIC DATA
-// ==========================
+// ======================
+// Topics
+// ======================
 
 const topics = {
 
-  "Human Physiology": [
+  "Human Physiology":[
     "Breathing and Exchange of Gases",
     "Body Fluids and Circulation",
     "Excretory Products and their Elimination",
@@ -57,23 +53,34 @@ const topics = {
     "Chemical Coordination and Integration"
   ],
 
-  "Cell: Structure and Function": [
+  "Cell: Structure and Function":[
     "Cell Theory",
-    "Prokaryotic Cell",
-    "Eukaryotic Cell",
     "Cell Organelles",
     "Cell Cycle",
     "Mitosis",
     "Meiosis"
   ],
 
-  "Kinematics": [
-    "Motion in One Dimension",
-    "Motion in Two Dimensions",
-    "Relative Motion"
+  "Plant Physiology":[
+    "Photosynthesis",
+    "Respiration",
+    "Mineral Nutrition",
+    "Transport in Plants"
   ],
 
-  "Atomic Structure": [
+  "Genetics and Evolution":[
+    "Mendelian Genetics",
+    "Molecular Basis of Inheritance",
+    "Evolution"
+  ],
+
+  "Kinematics":[
+    "Motion in One Dimension",
+    "Motion in Two Dimensions",
+    "Projectile Motion"
+  ],
+
+  "Atomic Structure":[
     "Bohr Model",
     "Quantum Numbers",
     "Electronic Configuration"
@@ -81,164 +88,108 @@ const topics = {
 
 };
 
-// ==========================
-// LOAD CHAPTERS
-// ==========================
+// ======================
+// Load Chapters
+// ======================
 
-function loadChapters() {
+function loadChapters(){
 
-  const subject = document.getElementById("subject").value;
-  const chapter = document.getElementById("chapter");
+    const subject=document.getElementById("subject").value;
 
-  chapter.innerHTML = "";
+    const chapter=document.getElementById("chapter");
 
-  if (!chapters[subject]) {
-    chapter.innerHTML = "<option>Select Subject First</option>";
-    return;
-  }
+    chapter.innerHTML="";
 
-  chapters[subject].forEach(function(item) {
-    chapter.innerHTML += `<option>${item}</option>`;
-  });
+    if(!chapters[subject]){
+        chapter.innerHTML="<option>Select Subject First</option>";
+        return;
+    }
 
-  loadTopics();
+    chapters[subject].forEach(function(item){
 
-}
+        chapter.innerHTML+=`<option value="${item}">${item}</option>`;
 
-// ==========================
-// LOAD TOPICS
-// ==========================
+    });
 
-function loadTopics() {
-
-  const chapter = document.getElementById("chapter").value;
-  const topic = document.getElementById("topic");
-
-  topic.innerHTML = "";
-
-  if (!topics[chapter]) {
-
-    topic.innerHTML = "<option>Entire Chapter</option>";
-    return;
-
-  }
-
-  topics[chapter].forEach(function(item) {
-
-    topic.innerHTML += `<option>${item}</option>`;
-
-  });
+    loadTopics();
 
 }
 
-// ==========================
-// GENERATE DPP
-// ==========================
+// ======================
+// Load Topics
+// ======================
 
-function generateDPP() {
+function loadTopics(){
 
-const exam = document.getElementById("exam").value;
-const subject = document.getElementById("subject").value;
-const chapter = document.getElementById("chapter").value;
-const topic = document.getElementById("topic").value;
-const difficulty = document.getElementById("difficulty").value;
-const questions = document.getElementById("questions").value;
+    const chapter=document.getElementById("chapter").value;
 
-document.getElementById("result").innerHTML = `
-<h2>📄 DPP Details</h2>
+    const topic=document.getElementById("topic");
 
-<p><b>Exam:</b> ${exam}</p>
-<p><b>Subject:</b> ${subject}</p>
-<p><b>Chapter:</b> ${chapter}</p>
-<p><b>Topic:</b> ${topic}</p>
-<p><b>Difficulty:</b> ${difficulty}</p>
-<p><b>Questions:</b> ${questions}</p>
+    topic.innerHTML="";
 
-<hr>
+    if(!topics[chapter]){
 
-<h3>🤖 Ready to Generate AI DPP</h3>
+        topic.innerHTML="<option>Entire Chapter</option>";
 
-<button onclick="generateAI()">
-Generate with Gemini AI
-</button>
-`;
-async function generateAI() {
+        return;
 
-const exam = document.getElementById("exam").value;
-const subject = document.getElementById("subject").value;
-const chapter = document.getElementById("chapter").value;
-const topic = document.getElementById("topic").value;
-const difficulty = document.getElementById("difficulty").value;
-const questions = document.getElementById("questions").value;
+    }
 
-const prompt = `
-Generate ${questions} original ${exam} ${subject} MCQs.
+    topics[chapter].forEach(function(item){
 
-Chapter: ${chapter}
+        topic.innerHTML+=`<option value="${item}">${item}</option>`;
 
-Topic: ${topic}
-
-Difficulty: ${difficulty}
-
-Rules:
-1. Strictly follow the latest NEET/JEE syllabus.
-2. Use NCERT concepts.
-3. Each question must have 4 options (A, B, C, D).
-4. Give the correct answer after each question.
-5. Give a short explanation.
-`;
-
-document.getElementById("result").innerHTML = "⏳ Generating DPP...";
-
-const response = await fetch("/api/generate", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ prompt })
-});
-
-const data = await response.json();
-
-const text =
-data.candidates?.[0]?.content?.parts?.[0]?.text ||
-"Unable to generate DPP.";
-
-document.getElementById("result").innerHTML = `
-<h2>📄 Generated DPP</h2>
-<pre>${text}</pre>
-`;
+    });
 
 }
 
-alert("Next step: Gemini AI will generate the DPP.");
+// ======================
+// Generate DPP
+// ======================
+
+function generateDPP(){
+
+    const exam=document.getElementById("exam").value;
+    const subject=document.getElementById("subject").value;
+    const chapter=document.getElementById("chapter").value;
+    const topic=document.getElementById("topic").value;
+    const difficulty=document.getElementById("difficulty").value;
+    const questions=document.getElementById("questions").value;
+
+    document.getElementById("result").innerHTML=`
+
+    <h2>📄 DPP Ready</h2>
+
+    <p><b>Exam:</b> ${exam}</p>
+
+    <p><b>Subject:</b> ${subject}</p>
+
+    <p><b>Chapter:</b> ${chapter}</p>
+
+    <p><b>Topic:</b> ${topic}</p>
+
+    <p><b>Difficulty:</b> ${difficulty}</p>
+
+    <p><b>Questions:</b> ${questions}</p>
+
+    <hr>
+
+    <button onclick="generateAI()">
+
+    🤖 Generate with Gemini AI
+
+    </button>
+
+    `;
 
 }
-}
-  if (subject === "") {
-    alert("Please select a subject.");
-    return;
-  }
 
-  const prompt = `
-Generate ${questions} original ${exam} MCQs.
+// ======================
+// AI Button
+// ======================
 
-Subject: ${subject}
-Chapter: ${chapter}
-Topic: ${topic}
-Difficulty: ${difficulty}
+function generateAI(){
 
-Rules:
-- Strictly follow the latest NEET/JEE syllabus.
-- Use NCERT concepts wherever applicable.
-- Provide 4 options.
-- Give the correct answer.
-- Give a short explanation.
-`;
-
-  document.getElementById("result").innerHTML = `
-<h3>✅ AI Prompt Ready</h3>
-<pre>${prompt}</pre>
-`;
+    alert("Gemini AI integration is the next step!");
 
 }
