@@ -32,12 +32,22 @@
 
 <label>Subject</label>
 
-<select id="subject">
+<select id="subject" onchange="loadChapters()">
+    <option value="">Select Subject</option>
+    <option value="Biology">Biology</option>
+    <option value="Physics">Physics</option>
+    <option value="Chemistry">Chemistry</option>
+    <option value="Mathematics">Mathematics (JEE)</option>
+</select>
 
-<option value="Biology">Biology</option>
-<option value="Physics">Physics</option>
-<option value="Chemistry">Chemistry</option>
-<option value="Mathematics">Mathematics (JEE)</option>
+<br><br>
+
+<label>Chapter</label>
+
+<select id="chapter">
+    <option>Select Subject First</option> 
+
+</select>
 
 </select>
 
