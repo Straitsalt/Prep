@@ -1,47 +1,63 @@
-async function generateDPP() {
+const chapters = {
 
-    const exam = document.getElementById("exam").value;
-    const subject = document.getElementById("subject").value;
-    const chapter = document.getElementById("chapter").value;
-    const topic = document.getElementById("topic").value;
-    const difficulty = document.getElementById("difficulty").value;
-    const questions = document.getElementById("questions").value;
+Biology: [
+"Cell: Structure and Function",
+"Biomolecules",
+"Human Physiology",
+"Plant Physiology",
+"Genetics and Evolution",
+"Biotechnology",
+"Ecology"
+],
 
-    if (chapter === "") {
-        alert("Please select a chapter.");
-        return;
-    }
+Physics: [
+"Kinematics",
+"Laws of Motion",
+"Work, Energy and Power",
+"Gravitation",
+"Current Electricity",
+"Electrostatics",
+"Modern Physics"
+],
 
-    const prompt = `
-Generate ${questions} original ${exam} ${subject} MCQs.
+Chemistry: [
+"Atomic Structure",
+"Chemical Bonding",
+"Thermodynamics",
+"Equilibrium",
+"Organic Chemistry"
+],
 
-Chapter: ${chapter}
-Topic: ${topic || "Entire Chapter"}
-Difficulty: ${difficulty}
+Mathematics: [
+"Relations and Functions",
+"Limits",
+"Differentiation",
+"Integration",
+"Probability"
+]
 
-Rules:
-- Strictly follow the latest NEET/JEE syllabus.
-- Use NCERT concepts wherever applicable.
-- Each question must have 4 options.
-- Include the correct answer and a short explanation.
+};
+
+function loadChapters(){
+
+const subject=document.getElementById("subject").value;
+
+const chapter=document.getElementById("chapter");
+
+chapter.innerHTML="";
+
+chapters[subject].forEach(item=>{
+
+chapter.innerHTML+=`
+<option>${item}</option>
 `;
 
-    document.getElementById("result").innerHTML = "⏳ Generating DPP...";
+});
 
-    const response = await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt })
-    });
+}
 
-    const data = await response.json();
+function generateDPP(){
 
-    const text =
-        data.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "No response from AI.";
+alert("Next step: Gemini AI will generate the DPP.");
 
-    document.getElementById("result").innerHTML =
-        "<pre>" + text + "</pre>";
 }
