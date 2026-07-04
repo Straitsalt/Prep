@@ -4,11 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PrepAce - AI DPP Generator</title>
 
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -22,127 +20,60 @@
 <p>Create a custom NEET/JEE DPP</p>
 
 <label>Exam</label>
-
 <select id="exam">
-<option value="NEET">NEET</option>
-<option value="JEE">JEE</option>
+    <option value="NEET">NEET</option>
+    <option value="JEE">JEE</option>
 </select>
 
 <br><br>
 
 <label>Subject</label>
-
 <select id="subject" onchange="loadChapters()">
     <option value="">Select Subject</option>
     <option value="Biology">Biology</option>
     <option value="Physics">Physics</option>
     <option value="Chemistry">Chemistry</option>
-    <option value="Mathematics">Mathematics (JEE)</option>
+    <option value="Mathematics">Mathematics</option>
 </select>
 
 <br><br>
 
 <label>Chapter</label>
-
-<select id="chapter">
-    <option>Select Subject First</option> 
-
-</select>
-
-</select>
-
-<br><br>
-
-<label>Chapter</label>
-
-<select id="chapter">
-
-<option value="">Select Chapter</option>
-
-<optgroup label="Biology">
-
-<option>Cell: Structure and Function</option>
-<option>Genetics and Evolution</option>
-<option>Human Physiology</option>
-<option>Plant Physiology</option>
-<option>Biotechnology</option>
-<option>Ecology</option>
-
-</optgroup>
-
-<optgroup label="Physics">
-
-<option>Kinematics</option>
-<option>Laws of Motion</option>
-<option>Work, Energy and Power</option>
-<option>Current Electricity</option>
-<option>Electrostatics</option>
-<option>Modern Physics</option>
-
-</optgroup>
-
-<optgroup label="Chemistry">
-
-<option>Atomic Structure</option>
-<option>Chemical Bonding</option>
-<option>Thermodynamics</option>
-<option>Equilibrium</option>
-<option>Organic Chemistry</option>
-
-</optgroup>
-
-<optgroup label="Mathematics">
-
-<option>Relations and Functions</option>
-<option>Limits</option>
-<option>Differentiation</option>
-<option>Integration</option>
-<option>Probability</option>
-
-</optgroup>
-
+<select id="chapter" onchange="loadTopics()">
+    <option>Select Subject First</option>
 </select>
 
 <br><br>
 
 <label>Topic</label>
-
 <select id="topic">
-<option>Select Chapter First</option>
+    <option>Select Chapter First</option>
 </select>
 
 <br><br>
 
 <label>Difficulty</label>
-
 <select id="difficulty">
-
-<option>Easy</option>
-<option>Medium</option>
-<option>Hard</option>
-
+    <option>Easy</option>
+    <option>Medium</option>
+    <option>Hard</option>
 </select>
 
 <br><br>
 
 <label>Number of Questions</label>
-
 <select id="questions">
-
-<option>10</option>
-<option>20</option>
-<option>30</option>
-<option>50</option>
-<option>100</option>
-
+    <option>10</option>
+    <option>20</option>
+    <option>30</option>
+    <option>50</option>
+    <option>100</option>
 </select>
 
 <br><br>
 
 <button onclick="generateDPP()">
-
 🚀 Generate DPP
-
 </button>
 
 <br><br>
@@ -152,13 +83,7 @@
 <br>
 
 <a href="dashboard.html">
-
-<button>
-
-⬅ Back to Dashboard
-
-</button>
-
+<button>⬅ Back to Dashboard</button>
 </a>
 
 </div>
