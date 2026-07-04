@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI DPP Generator</title>
+
+<title>PrepAce - AI DPP Generator</title>
 
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -16,48 +19,137 @@
 
 <h1>🤖 AI DPP Generator</h1>
 
+<p>Create a custom NEET/JEE DPP</p>
+
 <label>Exam</label>
+
 <select id="exam">
-    <option>NEET</option>
-    <option>JEE</option>
+<option value="NEET">NEET</option>
+<option value="JEE">JEE</option>
 </select>
-
-<label>Subject</label>
-<select id="subject">
-    <option>Biology</option>
-    <option>Physics</option>
-    <option>Chemistry</option>
-    <option>Mathematics (JEE)</option>
-</select>
-
-<label>Chapter</label>
-<input type="text" id="chapter" placeholder="Enter Chapter Name">
-
-<label>Topic (Optional)</label>
-<input type="text" id="topic" placeholder="Enter Topic">
-
-<label>Difficulty</label>
-<select id="difficulty">
-    <option>Easy</option>
-    <option>Medium</option>
-    <option>Hard</option>
-</select>
-
-<label>Number of Questions</label>
-<select id="questions">
-    <option>10</option>
-    <option>20</option>
-    <option>30</option>
-    <option>50</option>
-    <option>100</option>
-</select>
-
-<button onclick="generateDPP()">Generate DPP</button>
 
 <br><br>
 
+<label>Subject</label>
+
+<select id="subject">
+
+<option value="Biology">Biology</option>
+<option value="Physics">Physics</option>
+<option value="Chemistry">Chemistry</option>
+<option value="Mathematics">Mathematics (JEE)</option>
+
+</select>
+
+<br><br>
+
+<label>Chapter</label>
+
+<select id="chapter">
+
+<option value="">Select Chapter</option>
+
+<optgroup label="Biology">
+
+<option>Cell: Structure and Function</option>
+<option>Genetics and Evolution</option>
+<option>Human Physiology</option>
+<option>Plant Physiology</option>
+<option>Biotechnology</option>
+<option>Ecology</option>
+
+</optgroup>
+
+<optgroup label="Physics">
+
+<option>Kinematics</option>
+<option>Laws of Motion</option>
+<option>Work, Energy and Power</option>
+<option>Current Electricity</option>
+<option>Electrostatics</option>
+<option>Modern Physics</option>
+
+</optgroup>
+
+<optgroup label="Chemistry">
+
+<option>Atomic Structure</option>
+<option>Chemical Bonding</option>
+<option>Thermodynamics</option>
+<option>Equilibrium</option>
+<option>Organic Chemistry</option>
+
+</optgroup>
+
+<optgroup label="Mathematics">
+
+<option>Relations and Functions</option>
+<option>Limits</option>
+<option>Differentiation</option>
+<option>Integration</option>
+<option>Probability</option>
+
+</optgroup>
+
+</select>
+
+<br><br>
+
+<label>Topic (Optional)</label>
+
+<input
+type="text"
+id="topic"
+placeholder="Example: Breathing and Exchange of Gases">
+
+<br><br>
+
+<label>Difficulty</label>
+
+<select id="difficulty">
+
+<option>Easy</option>
+<option>Medium</option>
+<option>Hard</option>
+
+</select>
+
+<br><br>
+
+<label>Number of Questions</label>
+
+<select id="questions">
+
+<option>10</option>
+<option>20</option>
+<option>30</option>
+<option>50</option>
+<option>100</option>
+
+</select>
+
+<br><br>
+
+<button onclick="generateDPP()">
+
+🚀 Generate DPP
+
+</button>
+
+<br><br>
+
+<div id="result"></div>
+
+<br>
+
 <a href="dashboard.html">
-<button>⬅ Back to Dashboard</button>
+
+<button>
+
+⬅ Back to Dashboard
+
+</button>
+
 </a>
 
 </div>
