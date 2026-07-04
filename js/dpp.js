@@ -162,7 +162,54 @@ document.getElementById("result").innerHTML = `
 Generate with Gemini AI
 </button>
 `;
-function generateAI(){
+async function generateAI() {
+
+const exam = document.getElementById("exam").value;
+const subject = document.getElementById("subject").value;
+const chapter = document.getElementById("chapter").value;
+const topic = document.getElementById("topic").value;
+const difficulty = document.getElementById("difficulty").value;
+const questions = document.getElementById("questions").value;
+
+const prompt = `
+Generate ${questions} original ${exam} ${subject} MCQs.
+
+Chapter: ${chapter}
+
+Topic: ${topic}
+
+Difficulty: ${difficulty}
+
+Rules:
+1. Strictly follow the latest NEET/JEE syllabus.
+2. Use NCERT concepts.
+3. Each question must have 4 options (A, B, C, D).
+4. Give the correct answer after each question.
+5. Give a short explanation.
+`;
+
+document.getElementById("result").innerHTML = "⏳ Generating DPP...";
+
+const response = await fetch("/api/generate", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ prompt })
+});
+
+const data = await response.json();
+
+const text =
+data.candidates?.[0]?.content?.parts?.[0]?.text ||
+"Unable to generate DPP.";
+
+document.getElementById("result").innerHTML = `
+<h2>📄 Generated DPP</h2>
+<pre>${text}</pre>
+`;
+
+}
 
 alert("Next step: Gemini AI will generate the DPP.");
 
