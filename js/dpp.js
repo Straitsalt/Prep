@@ -1,4 +1,4 @@
-function generateDPP() {
+async function generateDPP() {
 
     const exam = document.getElementById("exam").value;
     const subject = document.getElementById("subject").value;
@@ -16,22 +16,32 @@ function generateDPP() {
 Generate ${questions} original ${exam} ${subject} MCQs.
 
 Chapter: ${chapter}
-
 Topic: ${topic || "Entire Chapter"}
-
 Difficulty: ${difficulty}
 
 Rules:
-1. Strictly follow the latest NEET/JEE syllabus.
-2. Use NCERT concepts wherever applicable.
-3. Each question must have 4 options (A, B, C, D).
-4. Give the correct answer.
-5. Give a short explanation.
-6. Return clean formatting.
+- Strictly follow the latest NEET/JEE syllabus.
+- Use NCERT concepts wherever applicable.
+- Each question must have 4 options.
+- Include the correct answer and a short explanation.
 `;
 
-    document.getElementById("result").innerHTML = `
-        <h3>AI Prompt Ready ✅</h3>
-        <pre>${prompt}</pre>
-    `;
+    document.getElementById("result").innerHTML = "⏳ Generating DPP...";
+
+    const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt })
+    });
+
+    const data = await response.json();
+
+    const text =
+        data.candidates?.[0]?.content?.parts?.[0]?.text ||
+        "No response from AI.";
+
+    document.getElementById("result").innerHTML =
+        "<pre>" + text + "</pre>";
 }
