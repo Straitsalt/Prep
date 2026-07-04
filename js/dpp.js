@@ -147,7 +147,7 @@ function loadTopics(){
 // Generate DPP
 // ======================
 
-function generateDPP(){
+function generateDPP() {
 
     const exam = document.getElementById("exam").value;
     const subject = document.getElementById("subject").value;
@@ -155,8 +155,8 @@ function generateDPP(){
     const topic = document.getElementById("topic").value;
     const difficulty = document.getElementById("difficulty").value;
     const questions = document.getElementById("questions").value;
-document.getElementById("result").innerHTML =
-"<h2>⏳ Generating your DPP...</h2>";
+
+    // Save DPP history
     const dpp = {
         exam,
         subject,
@@ -168,13 +168,11 @@ document.getElementById("result").innerHTML =
     };
 
     let history = JSON.parse(localStorage.getItem("dppHistory")) || [];
-
     history.push(dpp);
-
     localStorage.setItem("dppHistory", JSON.stringify(history));
 
     document.getElementById("result").innerHTML = `
-        <h2>✅ DPP Saved Successfully</h2>
+        <h2>📄 DPP Ready</h2>
 
         <p><b>Exam:</b> ${exam}</p>
         <p><b>Subject:</b> ${subject}</p>
@@ -185,57 +183,36 @@ document.getElementById("result").innerHTML =
 
         <br>
 
+        <button onclick="generateAI()">
+            🤖 Generate with Gemini AI
+        </button>
+
+        <br><br>
+
         <button onclick="location.href='history.html'">
-        📚 View History
+            📚 View History
         </button>
     `;
 }
-    🤖 Generate with Gemini AI
-
-    </button>
-
-    `;
-
-}
 
 // ======================
-// AI Button
+// Gemini AI
 // ======================
 
-const prompt = `
-You are an expert NEET/JEE educator.
+async function generateAI() {
 
-Generate ${questions} original ${exam} multiple-choice questions.
+    document.getElementById("result").innerHTML =
+    "<h2>⏳ Generating your DPP...</h2>";
 
-Subject: ${subject}
-Chapter: ${chapter}
-Topic: ${topic}
-Difficulty: ${difficulty}
+    // We will connect the real Gemini API after deploying to Vercel.
+    setTimeout(() => {
+        document.getElementById("result").innerHTML = `
+            <h2>🤖 Gemini AI</h2>
 
-Rules:
-- Follow the latest NEET/JEE syllabus.
-- Use NCERT concepts wherever applicable.
-- Do NOT copy questions from books.
-- Each question must have exactly 4 options (A, B, C, D).
-- Mention the correct answer.
-- Give a short explanation (1–2 lines).
+            <p>Your AI DPP will be generated here after connecting the Gemini API.</p>
 
-Format:
-
-Q1.
-Question
-
-A.
-B.
-C.
-D.
-
-Answer:
-Explanation:
-
-Repeat for all questions.
-`;{
-
-    alert("Gemini AI integration is the next step!");
+            <p>✅ Subject, Chapter, Topic and Difficulty have been captured successfully.</p>
+        `;
+    }, 1500);
 
 }
