@@ -155,7 +155,8 @@ function generateDPP(){
     const topic = document.getElementById("topic").value;
     const difficulty = document.getElementById("difficulty").value;
     const questions = document.getElementById("questions").value;
-
+document.getElementById("result").innerHTML =
+"<h2>⏳ Generating your DPP...</h2>";
     const dpp = {
         exam,
         subject,
