@@ -7,19 +7,31 @@ function generateDPP() {
     const difficulty = document.getElementById("difficulty").value;
     const questions = document.getElementById("questions").value;
 
-    if (chapter.trim() === "") {
-        alert("Please enter a chapter name.");
+    if (chapter === "") {
+        alert("Please select a chapter.");
         return;
     }
 
-    alert(
-        "Generating DPP...\n\n" +
-        "Exam: " + exam + "\n" +
-        "Subject: " + subject + "\n" +
-        "Chapter: " + chapter + "\n" +
-        "Topic: " + (topic || "All Topics") + "\n" +
-        "Difficulty: " + difficulty + "\n" +
-        "Questions: " + questions
-    );
+    const prompt = `
+Generate ${questions} original ${exam} ${subject} MCQs.
 
+Chapter: ${chapter}
+
+Topic: ${topic || "Entire Chapter"}
+
+Difficulty: ${difficulty}
+
+Rules:
+1. Strictly follow the latest NEET/JEE syllabus.
+2. Use NCERT concepts wherever applicable.
+3. Each question must have 4 options (A, B, C, D).
+4. Give the correct answer.
+5. Give a short explanation.
+6. Return clean formatting.
+`;
+
+    document.getElementById("result").innerHTML = `
+        <h3>AI Prompt Ready ✅</h3>
+        <pre>${prompt}</pre>
+    `;
 }
