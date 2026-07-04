@@ -201,7 +201,39 @@ function generateDPP(){
 // AI Button
 // ======================
 
-function generateAI(){
+const prompt = `
+You are an expert NEET/JEE educator.
+
+Generate ${questions} original ${exam} multiple-choice questions.
+
+Subject: ${subject}
+Chapter: ${chapter}
+Topic: ${topic}
+Difficulty: ${difficulty}
+
+Rules:
+- Follow the latest NEET/JEE syllabus.
+- Use NCERT concepts wherever applicable.
+- Do NOT copy questions from books.
+- Each question must have exactly 4 options (A, B, C, D).
+- Mention the correct answer.
+- Give a short explanation (1–2 lines).
+
+Format:
+
+Q1.
+Question
+
+A.
+B.
+C.
+D.
+
+Answer:
+Explanation:
+
+Repeat for all questions.
+`;{
 
     alert("Gemini AI integration is the next step!");
 
