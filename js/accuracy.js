@@ -1,49 +1,76 @@
-function saveAccuracy() {
+function saveAccuracy(){
 
-    const chapter = document.getElementById("chapter").value.trim();
-    const correct = parseInt(document.getElementById("correct").value);
-    const incorrect = parseInt(document.getElementById("incorrect").value);
+const chapter=document.getElementById("chapter").value;
 
-    if (chapter === "" || isNaN(correct) || isNaN(incorrect)) {
-        alert("Please fill all fields.");
-        return;
-    }
+const correct=Number(document.getElementById("correct").value);
 
-    const total = correct + incorrect;
-    const accuracy = ((correct / total) * 100).toFixed(2);
+const incorrect=Number(document.getElementById("incorrect").value);
 
-    let records = JSON.parse(localStorage.getItem("accuracyRecords")) || [];
-
-    records.push({
-        chapter: chapter,
-        correct: correct,
-        incorrect: incorrect,
-        accuracy: accuracy
-    });
-
-    localStorage.setItem("accuracyRecords", JSON.stringify(records));
-
-    displayRecords();
+if(chapter==""){
+alert("Enter Chapter");
+return;
 }
 
-function displayRecords() {
+const accuracy=((correct/(correct+incorrect))*100).toFixed(2);
 
-    const records = JSON.parse(localStorage.getItem("accuracyRecords")) || [];
+let data=JSON.parse(localStorage.getItem("accuracy"))||[];
 
-    let html = "<h3>Saved Records</h3>";
+data.push({
+chapter,
+accuracy
+});
 
-    records.forEach(record => {
-        html += `
-        <p>
-        <b>${record.chapter}</b><br>
-        Correct: ${record.correct}<br>
-        Incorrect: ${record.incorrect}<br>
-        Accuracy: ${record.accuracy}%<br><br>
-        </p>
-        `;
-    });
+localStorage.setItem("accuracy",JSON.stringify(data));
 
-    document.getElementById("result").innerHTML = html;
+showTable();
+
 }
 
-displayRecords();
+function showTable(){
+
+let data=JSON.parse(localStorage.getItem("accuracy"))||[];
+
+let table="";
+
+let best=0;
+let bestName="";
+
+let weak=100;
+let weakName="";
+
+data.forEach(item=>{
+
+table+=`
+<tr>
+<td>${item.chapter}</td>
+<td>${item.accuracy}%</td>
+</tr>
+`;
+
+if(Number(item.accuracy)>best){
+
+best=item.accuracy;
+bestName=item.chapter;
+
+}
+
+if(Number(item.accuracy)<weak){
+
+weak=item.accuracy;
+weakName=item.chapter;
+
+}
+
+});
+
+document.getElementById("tableData").innerHTML=table;
+
+document.getElementById("bestChapter").innerHTML=
+"🏆 Best Chapter : "+bestName+" ("+best+"%)";
+
+document.getElementById("weakChapter").innerHTML=
+"📉 Weak Chapter : "+weakName+" ("+weak+"%)";
+
+}
+
+showTable();
