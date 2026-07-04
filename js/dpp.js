@@ -239,6 +239,9 @@ Rules:
 
         const data = await response.json();
 
+console.log(data);
+alert(JSON.stringify(data));
+
         const text =
             data.candidates?.[0]?.content?.parts?.[0]?.text ||
             "No response from Gemini.";
