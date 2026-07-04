@@ -201,18 +201,60 @@ function generateDPP() {
 
 async function generateAI() {
 
+    const exam = document.getElementById("exam").value;
+    const subject = document.getElementById("subject").value;
+    const chapter = document.getElementById("chapter").value;
+    const topic = document.getElementById("topic").value;
+    const difficulty = document.getElementById("difficulty").value;
+    const questions = document.getElementById("questions").value;
+
     document.getElementById("result").innerHTML =
     "<h2>⏳ Generating your DPP...</h2>";
 
-    // We will connect the real Gemini API after deploying to Vercel.
-    setTimeout(() => {
+    const prompt = `
+Generate ${questions} original ${exam} MCQs.
+
+Subject: ${subject}
+Chapter: ${chapter}
+Topic: ${topic}
+Difficulty: ${difficulty}
+
+Rules:
+- Strictly follow the latest NEET/JEE syllabus.
+- Use NCERT concepts.
+- Each question should have 4 options.
+- Give the correct answer.
+- Give a short explanation.
+`;
+
+    try {
+
+        const response = await fetch("/api/generate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+
+        const text =
+            data.candidates?.[0]?.content?.parts?.[0]?.text ||
+            "No response from Gemini.";
+
         document.getElementById("result").innerHTML = `
-            <h2>🤖 Gemini AI</h2>
-
-            <p>Your AI DPP will be generated here after connecting the Gemini API.</p>
-
-            <p>✅ Subject, Chapter, Topic and Difficulty have been captured successfully.</p>
+            <h2>📄 Generated DPP</h2>
+            <pre>${text}</pre>
         `;
-    }, 1500);
+
+    } catch (error) {
+
+        document.getElementById("result").innerHTML = `
+            <h2>❌ Error</h2>
+            <p>${error.message}</p>
+        `;
+
+    }
 
 }
