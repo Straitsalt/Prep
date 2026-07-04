@@ -149,33 +149,46 @@ function loadTopics(){
 
 function generateDPP(){
 
-    const exam=document.getElementById("exam").value;
-    const subject=document.getElementById("subject").value;
-    const chapter=document.getElementById("chapter").value;
-    const topic=document.getElementById("topic").value;
-    const difficulty=document.getElementById("difficulty").value;
-    const questions=document.getElementById("questions").value;
+    const exam = document.getElementById("exam").value;
+    const subject = document.getElementById("subject").value;
+    const chapter = document.getElementById("chapter").value;
+    const topic = document.getElementById("topic").value;
+    const difficulty = document.getElementById("difficulty").value;
+    const questions = document.getElementById("questions").value;
 
-    document.getElementById("result").innerHTML=`
+    const dpp = {
+        exam,
+        subject,
+        chapter,
+        topic,
+        difficulty,
+        questions,
+        date: new Date().toLocaleString()
+    };
 
-    <h2>📄 DPP Ready</h2>
+    let history = JSON.parse(localStorage.getItem("dppHistory")) || [];
 
-    <p><b>Exam:</b> ${exam}</p>
+    history.push(dpp);
 
-    <p><b>Subject:</b> ${subject}</p>
+    localStorage.setItem("dppHistory", JSON.stringify(history));
 
-    <p><b>Chapter:</b> ${chapter}</p>
+    document.getElementById("result").innerHTML = `
+        <h2>✅ DPP Saved Successfully</h2>
 
-    <p><b>Topic:</b> ${topic}</p>
+        <p><b>Exam:</b> ${exam}</p>
+        <p><b>Subject:</b> ${subject}</p>
+        <p><b>Chapter:</b> ${chapter}</p>
+        <p><b>Topic:</b> ${topic}</p>
+        <p><b>Difficulty:</b> ${difficulty}</p>
+        <p><b>Questions:</b> ${questions}</p>
 
-    <p><b>Difficulty:</b> ${difficulty}</p>
+        <br>
 
-    <p><b>Questions:</b> ${questions}</p>
-
-    <hr>
-
-    <button onclick="generateAI()">
-
+        <button onclick="location.href='history.html'">
+        📚 View History
+        </button>
+    `;
+}
     🤖 Generate with Gemini AI
 
     </button>
