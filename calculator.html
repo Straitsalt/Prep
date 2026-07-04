@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEET/JEE Calculator</title>
 
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="login-box">
+
+<h1>🧮 NEET/JEE Calculator</h1>
+
+<input
+type="number"
+id="correct"
+placeholder="Correct Answers">
+
+<input
+type="number"
+id="incorrect"
+placeholder="Incorrect Answers">
+
+<button onclick="calculateScore()">
+
+Calculate
+
+</button>
+
+<br><br>
+
+<div id="result"></div>
+
+<br>
+
+<a href="dashboard.html">
+
+<button>
+
+⬅ Dashboard
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+<script src="js/calculator.js"></script>
+
+</body>
+</html>
