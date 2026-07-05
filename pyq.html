@@ -1,1 +1,67 @@
-.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrepAce - Previous Year Questions</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+<div class="login-box">
+
+<h1>📝 Previous Year Questions</h1>
+
+<label>Exam</label>
+<select id="exam">
+<option>NEET</option>
+<option>JEE</option>
+</select>
+
+<br><br>
+
+<label>Subject</label>
+<select id="subject">
+<option>Biology</option>
+<option>Physics</option>
+<option>Chemistry</option>
+<option>Mathematics</option>
+</select>
+
+<br><br>
+
+<label>Year</label>
+<select id="year">
+<option>2025</option>
+<option>2024</option>
+<option>2023</option>
+<option>2022</option>
+<option>2021</option>
+</select>
+
+<br><br>
+
+<button onclick="showPYQ()">
+Show Questions
+</button>
+
+<br><br>
+
+<div id="questions"></div>
+
+<br>
+
+<a href="dashboard.html">
+<button>⬅ Dashboard</button>
+</a>
+
+</div>
+</div>
+
+<script src="js/pyq.js"></script>
+
+</body>
+</html>
