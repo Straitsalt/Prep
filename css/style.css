@@ -188,3 +188,19 @@ button:hover{
     color:#666;
 
 }
+.icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.purple{border-top:6px solid #8b5cf6;}
+.green{border-top:6px solid #22c55e;}
+.orange{border-top:6px solid #f59e0b;}
+.blue{border-top:6px solid #3b82f6;}
+.red{border-top:6px solid #ef4444;}
+.cyan{border-top:6px solid #06b6d4;}
+.gray{border-top:6px solid #6b7280;}
+
+.card{
+    text-align:center;
+}
