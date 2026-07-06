@@ -3,105 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PrepAce Dashboard</title>
 
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
-<div class="topbar">
-
-    <h2>📚 PrepAce</h2>
-
-    <div class="user-box">
-
-        <span id="welcome">👋 Welcome!</span>
-<div class="stats">
-
-    <div class="stat-card">
-        <h3 id="totalDpp">0</h3>
-        <p>DPPs</p>
-    </div>
-
-    <div class="stat-card">
-        <h3 id="accuracyValue">0%</h3>
-        <p>Accuracy</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>48</h3>
-        <p>PDFs</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>100+</h3>
-        <p>PYQs</p>
-    </div>
-
-</div>
-
-        <button onclick="logout()">Logout</button>
-
-    </div>
-
-</div>
 
 <div class="dashboard">
-<div class="dashboard">
 
-<h1 id="welcome">👋 Welcome!</h1>
+    <!-- Top Bar -->
 
-<p id="subtitle">Ready to study today?</p>
+    <div class="topbar">
 
-<br>
+        <h2>📚 PrepAce</h2>
 
-<div class="card">
-<h2>🤖 AI DPP Generator</h2>
-<p>Create custom NEET/JEE DPPs.</p>
-<button onclick="location.href='dpp.html'">Open</button>
-</div>
+        <div class="user-box">
 
-<div class="card">
-<h2>📚 Study Resources</h2>
-<p>View and download notes & PDFs.</p>
-<button onclick="location.href='resources.html'">Open</button>
-</div>
+            <span id="welcome">👋 Welcome!</span>
 
-<div class="card">
-<h2>📝 Previous Year Questions</h2>
-<p>Practice chapter-wise PYQs.</p>
-<button onclick="location.href='pyq.html'">Open</button>
-</div>
+            <button onclick="logout()">Logout</button>
 
-<div class="card">
-<h2>🧮 NEET/JEE Calculator</h2>
-<p>Calculate score and accuracy.</p>
-<button onclick="location.href='calculator.html'">Open</button>
-</div>
+        </div>
 
-<div class="card">
-<h2>📊 Accuracy Tracker</h2>
-<p>Track chapter-wise performance.</p>
-<button onclick="location.href='accuracy.html'">Open</button>
-</div>
+    </div>
 
-<div class="card">
-<h2>📜 DPP History</h2>
-<p>View all generated DPPs.</p>
-<button onclick="location.href='history.html'">Open</button>
-</div>
+    <!-- Quick Stats -->
 
-<div class="card">
-<h2>👤 My Profile</h2>
-<p>View your statistics.</p>
-<button onclick="location.href='profile.html'">Open</button>
-</div>
+    <div class="stats">
 
-<div class="card">
-<h2>🚪 Logout</h2>
-<p>Sign out from PrepAce.</p>
-<button onclick="logout()">Logout</button>
-</div>
+        <div class="stat-card">
+            <h3 id="totalDpp">0</h3>
+            <p>DPPs</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="accuracyValue">0%</h3>
+            <p>Accuracy</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>48</h3>
+            <p>PDFs</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>100+</h3>
+            <p>PYQs</p>
+        </div>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+
+    <div class="card purple">
+        <div class="icon">🤖</div>
+        <h2>AI DPP Generator</h2>
+        <p>Create custom practice papers.</p>
+        <button onclick="location.href='dpp.html'">Open</button>
+    </div>
+
+    <div class="card green">
+        <div class="icon">📚</div>
+        <h2>Study Resources</h2>
+        <p>Notes, PDFs & NCERT resources.</p>
+        <button onclick="location.href='resources.html'">Open</button>
+    </div>
+
+    <div class="card orange">
+        <div class="icon">📝</div>
+        <h2>Previous Year Questions</h2>
+        <p>Practice official exam questions.</p>
+        <button onclick="location.href='pyq.html'">Open</button>
+    </div>
+
+    <div class="card blue">
+        <div class="icon">🧮</div>
+        <h2>Calculator</h2>
+        <p>Calculate marks & accuracy.</p>
+        <button onclick="location.href='calculator.html'">Open</button>
+    </div>
+
+    <div class="card red">
+        <div class="icon">📊</div>
+        <h2>Accuracy Tracker</h2>
+        <p>Track your chapter performance.</p>
+        <button onclick="location.href='accuracy.html'">Open</button>
+    </div>
+
+    <div class="card cyan">
+        <div class="icon">👤</div>
+        <h2>My Profile</h2>
+        <p>View your account statistics.</p>
+        <button onclick="location.href='profile.html'">Open</button>
+    </div>
+
+    <div class="card purple">
+        <div class="icon">📜</div>
+        <h2>DPP History</h2>
+        <p>View all generated DPPs.</p>
+        <button onclick="location.href='history.html'">Open</button>
+    </div>
 
 </div>
 
