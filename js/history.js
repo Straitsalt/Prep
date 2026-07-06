@@ -1,6 +1,10 @@
 function loadHistory() {
 
-    let data = JSON.parse(localStorage.getItem("dppHistory")) || [];
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+const key = `dppHistory_${currentUser.email}`;
+
+const history = JSON.parse(localStorage.getItem(key)) || [];
 
     let html = "";
 
