@@ -3,45 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PrepAce - Study Resources</title>
+
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
-<div class="container">
-<div class="login-box">
+<div class="dashboard">
 
-<h1>📚 Study Resources</h1>
+    <div class="topbar">
 
-<h2>🧬 Biology</h2>
+        <h2>📚 Study Resources</h2>
 
-<a href="pdf/biology/Human_Physiology.pdf" target="_blank">
-<button>📄 Human Physiology</button>
-</a>
+        <button onclick="location.href='dashboard.html'">
+            ⬅ Dashboard
+        </button>
 
-<br><br>
+    </div>
 
-<a href="pdf/biology/Genetics.pdf" target="_blank">
-<button>📄 Genetics</button>
-</a>
+    <input
+        type="text"
+        id="search"
+        placeholder="🔍 Search Notes..."
+        onkeyup="searchPDF()"
+    >
 
-<br><br>
+    <br><br>
 
-<h2>⚛ Physics</h2>
+    <div class="card green">
 
-<a href="pdf/physics/Kinematics.pdf" target="_blank">
-<button>📄 Kinematics</button>
-</a>
+        <div class="icon">🧬</div>
 
-<br><br>
+        <h2>Biology</h2>
 
-<a href="dashboard.html">
-<button>⬅ Back to Dashboard</button>
-</a>
+        <p>NCERT Notes & PDFs</p>
+
+        <button onclick="location.href='biology.html'">
+            Open
+        </button>
+
+    </div>
+
+    <div class="card blue">
+
+        <div class="icon">⚛️</div>
+
+        <h2>Physics</h2>
+
+        <p>Concept Notes & Formula Sheets</p>
+
+        <button onclick="location.href='physics.html'">
+            Open
+        </button>
+
+    </div>
+
+    <div class="card orange">
+
+        <div class="icon">🧪</div>
+
+        <h2>Chemistry</h2>
+
+        <p>Organic, Inorganic & Physical</p>
+
+        <button onclick="location.href='chemistry.html'">
+            Open
+        </button>
+
+    </div>
+
+    <div class="card purple">
+
+        <div class="icon">📐</div>
+
+        <h2>Mathematics</h2>
+
+        <p>JEE Mathematics Resources</p>
+
+        <button onclick="location.href='maths.html'">
+            Open
+        </button>
+
+    </div>
 
 </div>
-</div>
+
+<script>
+function searchPDF(){
+
+    const input = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card=>{
+
+        if(card.innerText.toLowerCase().includes(input))
+            card.style.display="block";
+        else
+            card.style.display="none";
+
+    });
+
+}
+</script>
 
 </body>
 </html>
