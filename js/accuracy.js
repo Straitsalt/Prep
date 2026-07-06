@@ -20,7 +20,10 @@ chapter,
 accuracy
 });
 
-localStorage.setItem("accuracy",JSON.stringify(data));
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const key = `accuracy_${currentUser.email}`;
+
+localStorage.setItem(key, accuracy);;
 
 showTable();
 
