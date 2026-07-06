@@ -80,7 +80,12 @@ function generateDPP() {
         date: new Date().toLocaleString()
     };
 
-    let history = JSON.parse(localStorage.getItem("dppHistory")) || [];
+    const currentUser = JSON.parse(localStorage.setItem(key, JSON.stringify(history));;
+
+const key = `dppHistory_${currentUser.email}`;
+
+let history = JSON.parse(localStorage.getItem(key)) || [];
+
     history.push(dpp);
     localStorage.setItem("dppHistory", JSON.stringify(history));
 
