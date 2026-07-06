@@ -3,7 +3,11 @@ const history = JSON.parse(localStorage.getItem("dppHistory")) || [];
 document.getElementById("total").innerText = history.length;
 
 // Load Accuracy
-const accuracy = localStorage.getItem("accuracy") || 0;
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+const accuracy = localStorage.getItem(`accuracy_${currentUser.email}`) || 0;
+
+document.getElementById("accuracy").innerText = accuracy + "%";
 document.getElementById("accuracy").innerText = accuracy + "%";
 
 // Load Logged-in User
