@@ -1,27 +1,35 @@
+function login() {
 
-        function login() {
-
-    const username = document.getElementById("username").value;
+    const email = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
-    // Check registered user first
-    const user = JSON.parse(localStorage.getItem("user"));
+    // Get all registered users
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    if (
-        user &&
-        username === user.email &&
-        password === user.password
-    ) {
+    // Find matching user
+    const user = users.find(
+        u => u.email === email && u.password === password
+    );
+
+    if (user) {
         localStorage.setItem("login", "true");
-        localStorage.setItem("currentUser", user.name);
+        localStorage.setItem("currentUser", JSON.stringify(user));
+
         window.location.href = "dashboard.html";
         return;
     }
 
-    // Demo account
-    if (username === "student" && password === "1234") {
+    // Optional demo account
+    if (email === "student" && password === "1234") {
+
         localStorage.setItem("login", "true");
-        localStorage.setItem("currentUser", "Demo Student");
+
+        localStorage.setItem("currentUser", JSON.stringify({
+            name: "Demo Student",
+            email: "student",
+            exam: "NEET"
+        }));
+
         window.location.href = "dashboard.html";
         return;
     }
